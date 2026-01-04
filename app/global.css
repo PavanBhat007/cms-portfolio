@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --bg-main: #1E1E2E; 
+  --color-neon: #61AFEF; 
+  --font-primary: 'JetBrains Mono', monospace;
+  --primary-text-color: #D9E0EE;
+  --font-size-base: 14px;
+  --font-weight-normal: 500;
+}
+
+body {
+  background-color: var(--bg-main);
+  font-family: var(--font-primary);
+  color: var(--primary-text-color);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+}
