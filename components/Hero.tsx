@@ -5,12 +5,12 @@ import React from "react";
 export const Hero = () => {
   return (
     <section className="mt-12 max-w-3xl lg:max-w-5xl">
-      <h1 className="text-4xl font-bold mb-6 text-white">
+      <h1 className="text-3xl md:text-4xl font-bold mb-6 text-white">
         Hi! I'm <span className="text-neon">Pavan 👋</span>
       </h1>
 
       <div className="text-base leading-relaxed w-[90%]">
-        <p className="text-sm">
+        <p className="text-sm text-gray-400 ">
           <span className="text-neon">root@kspavan:~$</span> cat about_me.md
         </p>
         <p className="mt-2">

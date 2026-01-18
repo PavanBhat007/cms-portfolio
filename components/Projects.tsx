@@ -1,9 +1,9 @@
 import {
   ArrowUpRight,
   Bolt,
+  Calendar,
   DraftingCompass,
   GithubIcon,
-  Tag,
   User,
 } from "lucide-react";
 import Image from "next/image";
@@ -12,62 +12,70 @@ const PROJECTS = [
   {
     title: "MetaBuddy",
     description:
-      "A Chrome extension that analyzes webpage <head> metadata, SEO tags, Open Graph data, and scripts in one click.",
+      "MetaBuddy is a Chrome extension that performs instant, client-side analysis of a webpage's <head>, extracting SEO metadata, Open Graph tags, and script details via DOM inspection, enabling a one-click, zero-backend audit of a page's search and social readiness.",
     image: "https://opengraph.githubassets.com/1/PavanBhat007/metabuddy",
     link: "https://www.github.com/PavanBhat007/metabuddy",
     languages: ["JavaScript"],
     tools: ["Chrome Extension API"],
     collaborators: ["Nuthan B"],
+    year: 2026,
   },
   {
     title: "ECG Analyser Demo",
     description:
-      "Basic project demo for an ECG analyzer that takes .adicht ECG file as input, and displays ECG features and a prediction if the ECG is normal (Sinus Rhythm) or is specimen (has arrhythmias)",
-    image: "https://opengraph.githubassets.com/1/PavanBhat007/ECG-Analyser-Demo",
+      "ECG Analyser Demo is a prototype that ingests .adicht ECG files, processes signals using Python libraries such as NeuroKit2, and presents extracted features with a basic normal vs arrhythmic prediction through a simple Flask-based web interface.",
+    image:
+      "https://opengraph.githubassets.com/1/PavanBhat007/ECG-Analyser-Demo",
     link: "https://www.github.com/PavanBhat007/ECG-Analyser-Demo",
     languages: ["Python", "JavaScript"],
     tools: ["Flask", "Adicht", "NeuroKit2"],
     collaborators: ["Nuthan B", "J N Sumanth", "P R Shashank"],
+    year: 2025,
   },
   {
     title: "Food Order Website",
     description:
-      "Food ordering website built as a part of WSA (WebStack Academy) MERN Internship/ Training",
-    image: "https://opengraph.githubassets.com/1/PavanBhat007/food-order-website",
+      "OrderIt is a MERN-based web application with a React + Redux frontend and a backend supporting order management, Stripe payment integration, Cloudinary image handling, and email workflows, built to simulate a real-world online food ordering system.",
+    image:
+      "https://opengraph.githubassets.com/1/PavanBhat007/food-order-website",
     link: "https://www.github.com/PavanBhat007/food-order-website",
     languages: ["ReactJS", "JavaScript", "Redux"],
     tools: ["Stripe", "Cloudinary", "MailTrap"],
     collaborators: [],
+    year: 2024,
   },
   {
     title: "Canteen Billing System",
     description:
-      "A Simple billing system for College Canteen using a token-based system.",
+      "Billing System is a simple college canteen billing system built with Flask, JavaScript, and SQLite that uses a token-based workflow to track orders and generate bills efficiently.",
     image: "https://opengraph.githubassets.com/1/PavanBhat007/BillingSystem",
     link: "https://www.github.com/PavanBhat007/BillingSystem",
     languages: ["Flask", "JavaScript", "SQLite"],
     tools: [],
     collaborators: ["Nuthan B", "Md. Kaifulla", "Md. Saad"],
+    year: 2024,
   },
   {
     title: "NASA Space Apps Hackathon Landing page",
     description:
-      "A Landing page for NASA Space Apps Hackathon 2023 conducted at Dayananda Sagar University, Harohalli.",
+      "NASA Space Apps Hackathon Landing page is a React-based landing page created for the 2024 NASA Space Apps Hackathon event at Dayananda Sagar University, providing event information and structure for participants.",
     image: "https://opengraph.githubassets.com/1/PavanBhat007/NasaSpaceApp",
     link: "https://www.github.com/PavanBhat007/NasaSpaceApp",
     languages: ["ReactJS", "JavaScript"],
     tools: [],
     collaborators: [],
+    year: 2024,
   },
   {
     title: "Hospital System Dashboard",
     description:
-      "Food ordering website built as a part of WSA (WebStack Academy) MERN Internship/ Training",
+      "This is a React-based dashboard application built with JavaScript that integrates APIs like Gemini and Google Calendar to help manage healthcare workflows and scheduling within a hospital context.",
     image: "https://opengraph.githubassets.com/1/PavanBhat007/Hospital-System",
     link: "https://www.github.com/PavanBhat007/Hospital-System",
     languages: ["ReactJS", "JavaScript"],
     tools: ["Gemini API", "Google Calendar API"],
     collaborators: ["P Amith", "Harsha", "Joshna"],
+    year: 2024,
   },
 ];
 
@@ -75,7 +83,8 @@ export const Projects = () => {
   return (
     <section className="w-full mt-20">
       <p className="text-sm text-gray-400 mb-3">
-        <span className="text-neon">root@kspavan:~$</span> ls projects/
+        <span className="text-neon">root@kspavan:~$</span> ls projects | head -n
+        2
       </p>
 
       <h2 className="text-2xl font-bold text-white mb-8">Selected Projects</h2>
@@ -85,6 +94,14 @@ export const Projects = () => {
           <ProjectCard key={idx} {...project} />
         ))}
       </div>
+
+      <button className="mt-6 inline-flex items-center gap-2 font-mono text-sm text-gray-400 hover:text-neon transition-colors group">
+        <span>View all projects</span>
+        <ArrowUpRight
+          size={14}
+          className="opacity-70 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+        />
+      </button>
     </section>
   );
 };
@@ -97,6 +114,7 @@ interface ProjectCardProps {
   collaborators: string[];
   repo?: string;
   image: string;
+  year: number;
 }
 
 export const ProjectCard = ({
@@ -107,14 +125,21 @@ export const ProjectCard = ({
   collaborators,
   repo,
   image,
+  year,
 }: ProjectCardProps) => {
   return (
     <div className="group relative rounded-lg border border-white/10 bg-[#0b0f14] p-5 transition hover:border-neon/60 hover:shadow-[0_0_20px_rgba(0,255,136,0.15)]">
       {/* Terminal Header */}
-      <div className="flex items-center gap-2 mb-4 text-xs text-gray-400">
-        <span className="w-3 h-3 rounded-full bg-red-500/80"></span>
-        <span className="w-3 h-3 rounded-full bg-yellow-400/80"></span>
-        <span className="w-3 h-3 rounded-full bg-green-500/80"></span>
+      <div className="flex items-start justify-between">
+        <div className="flex items-center gap-2 mb-4 text-xs text-gray-400">
+          <span className="w-3 h-3 rounded-full bg-red-500/80"></span>
+          <span className="w-3 h-3 rounded-full bg-yellow-400/80"></span>
+          <span className="w-3 h-3 rounded-full bg-green-500/80"></span>
+        </div>
+
+        <span className="text-xs font-mono text-gray-400 border border-white/10 px-2 py-0.5 rounded bg-black/30 mb-4">
+          {year}
+        </span>
       </div>
 
       <div>
