@@ -1,31 +1,52 @@
-import React from "react";
+"use client";
+
+import { User, Briefcase, FolderGit2, Mail } from "lucide-react";
 
 export const Navbar = () => {
   return (
-    <header className="px-8 mx-auto">
-      <nav className="flex justify-between items-center py-4">
-        <div className="group text-neon font-bold text-xl cursor-default">
-          KSP
-          <span className="max-w-0 overflow-hidden opacity-0 group-hover:max-w-xs group-hover:opacity-100 transition-all duration-300 ease-in-out">
-            avan
-          </span>
-        </div>
-        <div className="flex items-center gap-6 text-sm font-medium">
-          <a className="hover:text-neon" href="/about">
-            About
-          </a>{" "}
-          {/* About + Skills */}
-          <a className="hover:text-neon" href="/experiences">
-            Experiences
-          </a>
-          <a className="hover:text-neon" href="/projects">
-            Projects
-          </a>
-          <a className="hover:text-neon" href="/contact">
-            Contact
-          </a>
-        </div>
-      </nav>
+    <header className="sticky top-0 z-50 bg-[#0b0f14]/70 backdrop-blur-md border-b border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.25)]">
+      <div className="px-8 lg:px-12 mx-auto">
+        <nav className="flex justify-between items-center py-4">
+          {/* Logo */}
+          <div className="group text-neon font-bold text-xl cursor-default">
+            KSP
+            <span className="max-w-0 overflow-hidden opacity-0 group-hover:max-w-xs group-hover:opacity-100 transition-all duration-300 ease-in-out">
+              avan
+            </span>
+          </div>
+
+          {/* Nav Links */}
+          <div className="flex items-center gap-5 text-sm font-medium">
+            <a href="/about" className="group transition">
+              <span className="flex flex-col items-center justify-center">
+                <User className="w-5 h-5 group-hover:text-cyan-400" />
+                <span className="text-xs md:text-sm">About</span>
+              </span>
+            </a>
+
+            <a href="/experiences" className="group transition">
+              <span className="flex flex-col items-center justify-center">
+                <Briefcase className="w-5 h-5 group-hover:text-amber-400" />
+                <span className="text-xs md:text-sm">Experiences</span>
+              </span>
+            </a>
+
+            <a href="/projects" className="group transition">
+              <span className="flex flex-col items-center justify-center">
+                <FolderGit2 className="w-5 h-5 group-hover:text-emerald-400" />
+                <span className="text-xs md:text-sm">Projects</span>
+              </span>
+            </a>
+
+            <a href="/contact" className="group transition">
+              <span className="flex flex-col items-center justify-center">
+                <Mail className="w-5 h-5 group-hover:text-fuchsia-400" />
+                <span className="text-xs md:text-sm">Contact</span>
+              </span>
+            </a>
+          </div>
+        </nav>
+      </div>
     </header>
   );
 };
