@@ -73,15 +73,15 @@ const PROJECTS = [
 
 export const Projects = () => {
   return (
-    <section className="w-full px-6 lg:px-24 mt-20 mx-auto">
+    <section className="w-full mt-20">
       <p className="text-sm text-gray-400 mb-3">
         <span className="text-neon">root@kspavan:~$</span> ls projects/
       </p>
 
       <h2 className="text-2xl font-bold text-white mb-8">Selected Projects</h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {PROJECTS.map((project, idx) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {PROJECTS.slice(0, 2).map((project, idx) => (
           <ProjectCard key={idx} {...project} />
         ))}
       </div>

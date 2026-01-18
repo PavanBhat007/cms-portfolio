@@ -4,7 +4,7 @@ import React from "react";
 
 export const Hero = () => {
   return (
-    <section className="p-8 mt-12 max-w-3xl lg:max-w-5xl mx-auto lg:ml-20">
+    <section className="mt-12 max-w-3xl lg:max-w-5xl">
       <h1 className="text-4xl font-bold mb-6 text-white">
         Hi! I'm <span className="text-neon">Pavan 👋</span>
       </h1>
@@ -43,12 +43,15 @@ export const Hero = () => {
           <a href="https://linkedin.com/in/pavan-ks-bhat">LinkedIn</a>
         </div>
         <div className="flex items-center gap-1 font-medium">
-          <a href="/about">Get to know me better</a>
+          <a href="/about">
+            <span className="hidden md:inline">Get to know me better</span>
+            <span className="md:hidden">About me</span>
+          </a>
           <ArrowRight size={16} className="inline-block mr-2" />
         </div>
       </div>
 
-      <div className="flex items-center gap-4 mt-6 text-sm">
+      <div className="flex items-center gap-4 mt-6 text-sm flex-wrap">
         <div className="flex items-center gap-3 font-medium">
           <Image
             src="/images/neurofin.svg"
