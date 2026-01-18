@@ -13,7 +13,7 @@ const PROJECTS = [
     title: "MetaBuddy",
     description:
       "A Chrome extension that analyzes webpage <head> metadata, SEO tags, Open Graph data, and scripts in one click.",
-    image: "/projects/metabuddy.png",
+    image: "https://opengraph.githubassets.com/1/PavanBhat007/metabuddy",
     link: "https://www.github.com/PavanBhat007/metabuddy",
     languages: ["JavaScript"],
     tools: ["Chrome Extension API"],
@@ -23,7 +23,7 @@ const PROJECTS = [
     title: "ECG Analyser Demo",
     description:
       "Basic project demo for an ECG analyzer that takes .adicht ECG file as input, and displays ECG features and a prediction if the ECG is normal (Sinus Rhythm) or is specimen (has arrhythmias)",
-    image: "/projects/ECG-Analyser-Demo.png",
+    image: "https://opengraph.githubassets.com/1/PavanBhat007/ECG-Analyser-Demo",
     link: "https://www.github.com/PavanBhat007/ECG-Analyser-Demo",
     languages: ["Python", "JavaScript"],
     tools: ["Flask", "Adicht", "NeuroKit2"],
@@ -33,7 +33,7 @@ const PROJECTS = [
     title: "Food Order Website",
     description:
       "Food ordering website built as a part of WSA (WebStack Academy) MERN Internship/ Training",
-    image: "/projects/food-order-website.png",
+    image: "https://opengraph.githubassets.com/1/PavanBhat007/food-order-website",
     link: "https://www.github.com/PavanBhat007/food-order-website",
     languages: ["ReactJS", "JavaScript", "Redux"],
     tools: ["Stripe", "Cloudinary", "MailTrap"],
@@ -43,7 +43,7 @@ const PROJECTS = [
     title: "Canteen Billing System",
     description:
       "A Simple billing system for College Canteen using a token-based system.",
-    image: "/projects/BillingSystem.png",
+    image: "https://opengraph.githubassets.com/1/PavanBhat007/BillingSystem",
     link: "https://www.github.com/PavanBhat007/BillingSystem",
     languages: ["Flask", "JavaScript", "SQLite"],
     tools: [],
@@ -53,7 +53,7 @@ const PROJECTS = [
     title: "NASA Space Apps Hackathon Landing page",
     description:
       "A Landing page for NASA Space Apps Hackathon 2023 conducted at Dayananda Sagar University, Harohalli.",
-    image: "/projects/NasaSpaceApp.png",
+    image: "https://opengraph.githubassets.com/1/PavanBhat007/NasaSpaceApp",
     link: "https://www.github.com/PavanBhat007/NasaSpaceApp",
     languages: ["ReactJS", "JavaScript"],
     tools: [],
@@ -63,7 +63,7 @@ const PROJECTS = [
     title: "Hospital System Dashboard",
     description:
       "Food ordering website built as a part of WSA (WebStack Academy) MERN Internship/ Training",
-    image: "/projects/Hospital-System.png",
+    image: "https://opengraph.githubassets.com/1/PavanBhat007/Hospital-System",
     link: "https://www.github.com/PavanBhat007/Hospital-System",
     languages: ["ReactJS", "JavaScript"],
     tools: ["Gemini API", "Google Calendar API"],
