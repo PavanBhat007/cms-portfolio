@@ -68,98 +68,100 @@ export const ProjectCard = ({
   year,
 }: ProjectCardProps) => {
   return (
-    <div
-      key={id}
-      className="group relative rounded-lg border border-[#495068] bg-[#1E1E2E] p-5 hover:p-0 transition-[background-color,border-color,padding] ease-in-out hover:border-neon cursor-pointer"
-    >
-      <div>
-        <Image
-          src={image}
-          alt={title}
-          width={400}
-          height={200}
-          className="rounded mb-4 w-full group-hover:rounded-b-none transition-[border-radius]"
-        />
-      </div>
+    <Link href={`projects/${slug}`}>
+      <div
+        key={id}
+        className="group relative rounded-lg border border-[#495068] bg-[#1E1E2E] p-5 hover:p-0 transition-[background-color,border-color,padding] ease-in-out hover:border-neon cursor-pointer"
+      >
+        <div>
+          <Image
+            src={image}
+            alt={title}
+            width={400}
+            height={200}
+            className="rounded mb-4 w-full group-hover:rounded-b-none transition-[border-radius]"
+          />
+        </div>
 
-      <div className="group-hover:px-5 group-hover:pb-5 transition-[padding] duration-300 ease-in-out">
-        {/* Content */}
-        <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
+        <div className="group-hover:px-5 group-hover:pb-5 transition-[padding] duration-300 ease-in-out">
+          {/* Content */}
+          <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
 
-        <p className="text-sm text-gray-400 leading-relaxed mb-4 line-clamp-3">
-          {description}
-        </p>
+          <p className="text-sm text-gray-400 leading-relaxed mb-4 line-clamp-3">
+            {description}
+          </p>
 
-        <div className="flex items-center gap-2 flex-wrap">
-          <div className="flex flex-wrap gap-2">
-            {languages.map((lang) => (
-              <span
-                key={lang}
-                className="flex items-center gap-1.5 text-xs px-2 py-1 rounded 
+          <div className="flex items-center gap-2 flex-wrap">
+            <div className="flex flex-wrap gap-2">
+              {languages.map((lang) => (
+                <span
+                  key={lang}
+                  className="flex items-center gap-1.5 text-xs px-2 py-1 rounded 
                  border border-cyan-400/30 
                  bg-cyan-400/10 
                  text-cyan-300 
                  font-mono
                  hover:shadow-[0_0_8px_rgba(56,189,248,0.25)]
                  transition-shadow duration-200 ease-out"
-              >
-                <Bolt size={12} />
-                {lang}
-              </span>
-            ))}
-          </div>
+                >
+                  <Bolt size={12} />
+                  {lang}
+                </span>
+              ))}
+            </div>
 
-          <div className="flex flex-wrap gap-2">
-            {tools.map((tool) => (
-              <span
-                key={tool}
-                className="flex items-center gap-1.5 text-xs px-2 py-1 rounded 
+            <div className="flex flex-wrap gap-2">
+              {tools.map((tool) => (
+                <span
+                  key={tool}
+                  className="flex items-center gap-1.5 text-xs px-2 py-1 rounded 
                  border border-emerald-400/30 
                  bg-emerald-400/10 
                  text-emerald-300 
                  font-mono
                  hover:shadow-[0_0_8px_rgba(56,189,248,0.25)]
                  transition-shadow duration-200 ease-out"
-              >
-                <DraftingCompass size={12} />
-                {tool}
-              </span>
-            ))}
-          </div>
+                >
+                  <DraftingCompass size={12} />
+                  {tool}
+                </span>
+              ))}
+            </div>
 
-          <div className="flex flex-wrap gap-2">
-            {collaborators.map((person) => (
-              <span
-                key={person}
-                className="flex items-center gap-1.5 text-xs px-2 py-1 rounded 
+            <div className="flex flex-wrap gap-2">
+              {collaborators.map((person) => (
+                <span
+                  key={person}
+                  className="flex items-center gap-1.5 text-xs px-2 py-1 rounded 
                  border border-amber-400/30 
                  bg-amber-400/10 
                  text-amber-300 
                  font-mono cursor-pointer
                  hover:shadow-[0_0_8px_rgba(56,189,248,0.25)]
                  transition-shadow duration-200 ease-out"
-              >
-                <User size={12} />
-                {person}
-              </span>
-            ))}
-          </div>
+                >
+                  <User size={12} />
+                  {person}
+                </span>
+              ))}
+            </div>
 
-          {/* Footer */}
-          {repo && (
-            <a
-              href={repo}
-              target="_blank"
-              className="inline-flex items-center gap-2 text-sm text-gray-300 hover:text-neon transition-colors duration-200"
-            >
-              <GithubIcon size={16} />
-              View Source
-              <ArrowUpRight size={14} />
-            </a>
-          )}
+            {/* Footer */}
+            {repo && (
+              <a
+                href={repo}
+                target="_blank"
+                className="inline-flex items-center gap-2 text-sm text-gray-300 hover:text-neon transition-colors duration-200"
+              >
+                <GithubIcon size={16} />
+                View Source
+                <ArrowUpRight size={14} />
+              </a>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
@@ -178,7 +180,7 @@ export const ProjectPageCard = ({
         className="
         group rounded-lg overflow-hidden
         border border-[#3b415a]
-        bg-[#0d1117]
+        bg-[#0d1117] h-full
         hover:border-neon
         transition-colors duration-300
         font-mono cursor-pointer
