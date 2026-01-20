@@ -4,7 +4,7 @@ import { ArrowUpRight, Folder } from "lucide-react";
 
 export const ProjectsPage = () => {
   return (
-    <section className="w-full mt-12 px-12 xl:px-24">
+    <section className="w-full my-12 px-12 xl:px-24">
       <p className="text-sm text-gray-400 mb-3">
         <span className="text-neon">root@kspavan:~$</span> ls projects
       </p>

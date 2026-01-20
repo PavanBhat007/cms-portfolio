@@ -1,6 +1,7 @@
 "use client";
 
 import { User, Briefcase, FolderGit2, Mail } from "lucide-react";
+import Link from "next/link";
 
 export const Navbar = () => {
   return (
@@ -8,12 +9,14 @@ export const Navbar = () => {
       <div className="px-8 lg:px-12 mx-auto">
         <nav className="flex justify-between items-center py-4">
           {/* Logo */}
-          <div className="group text-neon font-bold text-xl cursor-default">
-            KSP
-            <span className="max-w-0 overflow-hidden opacity-0 group-hover:max-w-xs group-hover:opacity-100 transition-all duration-300 ease-in-out">
-              avan
-            </span>
-          </div>
+          <Link href="/">
+            <div className="group text-neon font-bold text-xl cursor-pointer">
+              KSP
+              <span className="max-w-0 overflow-hidden opacity-0 group-hover:max-w-xs group-hover:opacity-100 transition-all duration-300 ease-in-out">
+                avan
+              </span>
+            </div>
+          </Link>
 
           {/* Nav Links */}
           <div className="flex items-center gap-5 text-sm font-medium">
