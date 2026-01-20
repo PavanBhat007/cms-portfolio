@@ -1,83 +1,14 @@
 import {
   ArrowUpRight,
   Bolt,
-  Calendar,
   DraftingCompass,
   GithubIcon,
+  StarsIcon,
   User,
 } from "lucide-react";
 import Image from "next/image";
-
-const PROJECTS = [
-  {
-    title: "MetaBuddy",
-    description:
-      "MetaBuddy is a Chrome extension that performs instant, client-side analysis of a webpage's <head>, extracting SEO metadata, Open Graph tags, and script details via DOM inspection, enabling a one-click, zero-backend audit of a page's search and social readiness.",
-    image: "https://opengraph.githubassets.com/1/PavanBhat007/metabuddy",
-    link: "https://www.github.com/PavanBhat007/metabuddy",
-    languages: ["JavaScript"],
-    tools: ["Chrome Extension API"],
-    collaborators: ["Nuthan B"],
-    year: 2026,
-  },
-  {
-    title: "ECG Analyser Demo",
-    description:
-      "ECG Analyser Demo is a prototype that ingests .adicht ECG files, processes signals using Python libraries such as NeuroKit2, and presents extracted features with a basic normal vs arrhythmic prediction through a simple Flask-based web interface.",
-    image:
-      "https://opengraph.githubassets.com/1/PavanBhat007/ECG-Analyser-Demo",
-    link: "https://www.github.com/PavanBhat007/ECG-Analyser-Demo",
-    languages: ["Python", "JavaScript"],
-    tools: ["Flask", "Adicht", "NeuroKit2"],
-    collaborators: ["Nuthan B", "J N Sumanth", "P R Shashank"],
-    year: 2025,
-  },
-  {
-    title: "Food Order Website",
-    description:
-      "OrderIt is a MERN-based web application with a React + Redux frontend and a backend supporting order management, Stripe payment integration, Cloudinary image handling, and email workflows, built to simulate a real-world online food ordering system.",
-    image:
-      "https://opengraph.githubassets.com/1/PavanBhat007/food-order-website",
-    link: "https://www.github.com/PavanBhat007/food-order-website",
-    languages: ["ReactJS", "JavaScript", "Redux"],
-    tools: ["Stripe", "Cloudinary", "MailTrap"],
-    collaborators: [],
-    year: 2024,
-  },
-  {
-    title: "Canteen Billing System",
-    description:
-      "Billing System is a simple college canteen billing system built with Flask, JavaScript, and SQLite that uses a token-based workflow to track orders and generate bills efficiently.",
-    image: "https://opengraph.githubassets.com/1/PavanBhat007/BillingSystem",
-    link: "https://www.github.com/PavanBhat007/BillingSystem",
-    languages: ["Flask", "JavaScript", "SQLite"],
-    tools: [],
-    collaborators: ["Nuthan B", "Md. Kaifulla", "Md. Saad"],
-    year: 2024,
-  },
-  {
-    title: "NASA Space Apps Hackathon Landing page",
-    description:
-      "NASA Space Apps Hackathon Landing page is a React-based landing page created for the 2024 NASA Space Apps Hackathon event at Dayananda Sagar University, providing event information and structure for participants.",
-    image: "https://opengraph.githubassets.com/1/PavanBhat007/NasaSpaceApp",
-    link: "https://www.github.com/PavanBhat007/NasaSpaceApp",
-    languages: ["ReactJS", "JavaScript"],
-    tools: [],
-    collaborators: [],
-    year: 2024,
-  },
-  {
-    title: "Hospital System Dashboard",
-    description:
-      "This is a React-based dashboard application built with JavaScript that integrates APIs like Gemini and Google Calendar to help manage healthcare workflows and scheduling within a hospital context.",
-    image: "https://opengraph.githubassets.com/1/PavanBhat007/Hospital-System",
-    link: "https://www.github.com/PavanBhat007/Hospital-System",
-    languages: ["ReactJS", "JavaScript"],
-    tools: ["Gemini API", "Google Calendar API"],
-    collaborators: ["P Amith", "Harsha", "Joshna"],
-    year: 2024,
-  },
-];
+import { PROJECTS } from "../lib/data/projects";
+import Link from "next/link";
 
 export const Projects = () => {
   return (
@@ -87,7 +18,10 @@ export const Projects = () => {
         2
       </p>
 
-      <h2 className="text-2xl font-bold text-white mb-8">Selected Projects</h2>
+      <div className="flex items-center mb-8">
+        <StarsIcon size={24} className="inline-block mr-2 text-neon" />
+        <h2 className="text-2xl font-bold text-white">Featured Projects</h2>
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {PROJECTS.slice(0, 2).map((project, idx) => (
@@ -95,18 +29,22 @@ export const Projects = () => {
         ))}
       </div>
 
-      <button className="mt-6 inline-flex items-center gap-2 font-mono text-sm text-gray-400 hover:text-neon transition-colors group">
-        <span>View all projects</span>
-        <ArrowUpRight
-          size={14}
-          className="opacity-70 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-        />
-      </button>
+      <Link href="/projects">
+        <button className="mt-6 inline-flex items-center gap-2 font-mono text-sm text-gray-400 hover:text-neon transition-colors group">
+          <span>View all projects</span>
+          <ArrowUpRight
+            size={14}
+            className="opacity-70 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          />
+        </button>
+      </Link>
     </section>
   );
 };
 
 interface ProjectCardProps {
+  id: number;
+  slug: string;
   title: string;
   description: string;
   languages: string[];
@@ -118,6 +56,8 @@ interface ProjectCardProps {
 }
 
 export const ProjectCard = ({
+  id,
+  slug,
   title,
   description,
   languages,
@@ -128,104 +68,201 @@ export const ProjectCard = ({
   year,
 }: ProjectCardProps) => {
   return (
-    <div className="group relative rounded-lg border border-white/10 bg-[#0b0f14] p-5 transition hover:border-neon/60 hover:shadow-[0_0_20px_rgba(0,255,136,0.15)]">
-      {/* Terminal Header */}
-      <div className="flex items-start justify-between">
-        <div className="flex items-center gap-2 mb-4 text-xs text-gray-400">
-          <span className="w-3 h-3 rounded-full bg-red-500/80"></span>
-          <span className="w-3 h-3 rounded-full bg-yellow-400/80"></span>
-          <span className="w-3 h-3 rounded-full bg-green-500/80"></span>
-        </div>
-
-        <span className="text-xs font-mono text-gray-400 border border-white/10 px-2 py-0.5 rounded bg-black/30 mb-4">
-          {year}
-        </span>
-      </div>
-
+    <div
+      key={id}
+      className="group relative rounded-lg border border-[#495068] bg-[#1E1E2E] p-5 hover:p-0 transition-[background-color,border-color,padding] ease-in-out hover:border-neon cursor-pointer"
+    >
       <div>
         <Image
           src={image}
           alt={title}
           width={400}
           height={200}
-          className="rounded mb-4 w-full"
+          className="rounded mb-4 w-full group-hover:rounded-b-none transition-[border-radius]"
         />
       </div>
 
-      {/* Content */}
-      <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
+      <div className="group-hover:px-5 group-hover:pb-5 transition-[padding] duration-300 ease-in-out">
+        {/* Content */}
+        <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
 
-      <p className="text-sm text-gray-400 leading-relaxed mb-4 line-clamp-3">
-        {description}
-      </p>
+        <p className="text-sm text-gray-400 leading-relaxed mb-4 line-clamp-3">
+          {description}
+        </p>
 
-      <div className="flex flex-wrap gap-2 mb-4">
-        {languages.map((lang) => (
-          <span
-            key={lang}
-            className="flex items-center gap-1.5 text-xs px-2 py-1 rounded 
+        <div className="flex items-center gap-2 flex-wrap">
+          <div className="flex flex-wrap gap-2">
+            {languages.map((lang) => (
+              <span
+                key={lang}
+                className="flex items-center gap-1.5 text-xs px-2 py-1 rounded 
                  border border-cyan-400/30 
                  bg-cyan-400/10 
                  text-cyan-300 
                  font-mono
                  hover:shadow-[0_0_8px_rgba(56,189,248,0.25)]
-                 transition"
-          >
-            <Bolt size={12} />
-            {lang}
-          </span>
-        ))}
-      </div>
+                 transition-shadow duration-200 ease-out"
+              >
+                <Bolt size={12} />
+                {lang}
+              </span>
+            ))}
+          </div>
 
-      <div className="flex flex-wrap gap-2 mb-4">
-        {tools.map((tool) => (
-          <span
-            key={tool}
-            className="flex items-center gap-1.5 text-xs px-2 py-1 rounded 
+          <div className="flex flex-wrap gap-2">
+            {tools.map((tool) => (
+              <span
+                key={tool}
+                className="flex items-center gap-1.5 text-xs px-2 py-1 rounded 
                  border border-emerald-400/30 
                  bg-emerald-400/10 
                  text-emerald-300 
                  font-mono
                  hover:shadow-[0_0_8px_rgba(56,189,248,0.25)]
-                 transition"
-          >
-            <DraftingCompass size={12} />
-            {tool}
-          </span>
-        ))}
-      </div>
+                 transition-shadow duration-200 ease-out"
+              >
+                <DraftingCompass size={12} />
+                {tool}
+              </span>
+            ))}
+          </div>
 
-      <div className="flex flex-wrap gap-2 mb-4">
-        {collaborators.map((person) => (
-          <span
-            key={person}
-            className="flex items-center gap-1.5 text-xs px-2 py-1 rounded 
+          <div className="flex flex-wrap gap-2">
+            {collaborators.map((person) => (
+              <span
+                key={person}
+                className="flex items-center gap-1.5 text-xs px-2 py-1 rounded 
                  border border-amber-400/30 
                  bg-amber-400/10 
                  text-amber-300 
-                 font-mono
+                 font-mono cursor-pointer
                  hover:shadow-[0_0_8px_rgba(56,189,248,0.25)]
-                 transition cursor-pointer"
-          >
-            <User size={12} />
-            {person}
-          </span>
-        ))}
-      </div>
+                 transition-shadow duration-200 ease-out"
+              >
+                <User size={12} />
+                {person}
+              </span>
+            ))}
+          </div>
 
-      {/* Footer */}
-      {repo && (
-        <a
-          href={repo}
-          target="_blank"
-          className="inline-flex items-center gap-2 text-sm text-gray-300 hover:text-neon transition"
-        >
-          <GithubIcon size={16} />
-          View Source
-          <ArrowUpRight size={14} />
-        </a>
-      )}
+          {/* Footer */}
+          {repo && (
+            <a
+              href={repo}
+              target="_blank"
+              className="inline-flex items-center gap-2 text-sm text-gray-300 hover:text-neon transition-colors duration-200"
+            >
+              <GithubIcon size={16} />
+              View Source
+              <ArrowUpRight size={14} />
+            </a>
+          )}
+        </div>
+      </div>
     </div>
+  );
+};
+
+export const ProjectPageCard = ({
+  slug,
+  title,
+  description,
+  languages,
+  tools,
+  collaborators,
+  image,
+}: ProjectCardProps) => {
+  return (
+    <Link href={`/projects/${slug}`}>
+      <div
+        className="
+        group rounded-lg overflow-hidden
+        border border-[#3b415a]
+        bg-[#0d1117]
+        hover:border-neon
+        transition-colors duration-300
+        font-mono cursor-pointer
+      "
+      >
+        {/* Terminal header */}
+        <div className="flex items-center justify-between px-4 py-2 bg-[#161b22] border-b border-[#30363d]">
+          <div className="flex gap-2">
+            <span className="h-2.5 w-2.5 rounded-full bg-red-400/80" />
+            <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/80" />
+            <span className="h-2.5 w-2.5 rounded-full bg-green-400/80" />
+          </div>
+          <span className="text-xs text-neon">
+            <span className="text-gray-500">$</span> {slug}
+          </span>
+        </div>
+
+        {/* Image block (separate, clean) */}
+        <div className="relative bg-black">
+          <Image
+            src={image}
+            alt={title}
+            width={400}
+            height={200}
+            className="mb-4 w-full"
+          />
+        </div>
+
+        {/* Content */}
+        <div className="px-4 pb-4 space-y-3">
+          {/* Title */}
+          <div className="text-lg font-semibold">{title}</div>
+
+          {/* Description */}
+          {description && (
+            <p className="text-xs text-gray-400 leading-relaxed">
+              {description}
+            </p>
+          )}
+
+          {/* Tech stack */}
+          <div className="flex flex-wrap gap-2 pt-2">
+            {languages.map((lang) => (
+              <span
+                key={lang}
+                className="
+                text-[11px] px-2 py-0.5 rounded
+                bg-[#0b2f3a] text-cyan-300
+                border border-cyan-400/30
+              "
+              >
+                {lang}
+              </span>
+            ))}
+
+            {tools.map((tool) => (
+              <span
+                key={tool}
+                className="
+                text-[11px] px-2 py-0.5 rounded
+                bg-[#0b3a2a] text-emerald-300
+                border border-emerald-400/30
+              "
+              >
+                {tool}
+              </span>
+            ))}
+
+            {collaborators.map((person) => (
+              <span
+                key={person}
+                className="
+                text-[11px] px-2 py-0.5 rounded
+                bg-[#3a2a0b] text-amber-300
+                border border-amber-400/30
+              "
+              >
+                @{person}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </Link>
   );
 };
 
