@@ -1,6 +1,6 @@
 import { ArrowRight, GithubIcon, LinkedinIcon } from "lucide-react";
 import Image from "next/image";
-import React from "react";
+import { EXPERIENCES } from "../lib/data/experiences";
 
 export const Hero = () => {
   return (
@@ -52,34 +52,22 @@ export const Hero = () => {
       </div>
 
       <div className="flex items-center gap-4 mt-6 text-sm flex-wrap">
-        <div className="flex items-center gap-3 font-medium">
-          <Image
-            src="/images/neurofin.svg"
-            alt="Neurofin AI"
-            width={36}
-            height={36}
-          />
-          <a href="https://neurofin.ai/">Neurofin AI</a>
-        </div>
-        <div className="w-6 h-0.5 -rotate-[70deg] bg-neon"></div>
-        <div className="flex items-center gap-3 font-medium">
-          <Image
-            src="/images/imanage.svg"
-            alt="iManage"
-            width={36}
-            height={36}
-          />
-          <a href="https://imanage.com/">
-            iManage <span className="text-gray-600">(past)</span>
-          </a>
-        </div>
-        <div className="w-6 h-0.5 -rotate-[70deg] bg-neon"></div>
-        <div className="flex items-center gap-3 font-medium">
-          <Image src="/images/nokia.svg" alt="Nokia" width={36} height={36} />
-          <a href="https://nokia.com/">
-            Nokia <span className="text-gray-600">(past)</span>
-          </a>
-        </div>
+        {EXPERIENCES.map((exp, idx) => (
+          <>
+            <div className="flex items-center gap-3 font-medium">
+              <Image src={exp.logo} alt={exp.company} width={36} height={36} />
+              <a href={exp.link}>
+                {exp.company}{" "}
+                {!exp.is_current && (
+                  <span className="text-gray-600">(past)</span>
+                )}
+              </a>
+            </div>
+            {idx < EXPERIENCES.length - 1 && (
+              <div className="w-6 h-0.5 -rotate-[70deg] bg-neon" />
+            )}
+          </>
+        ))}
       </div>
     </section>
   );
